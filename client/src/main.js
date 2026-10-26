@@ -1,0 +1,10 @@
+import { createApp } from "vue";
+import "@fontsource/figtree/400.css";
+import "@fontsource/figtree/500.css";
+import "@fontsource/figtree/600.css";
+import "@fontsource/figtree/700.css";
+import "@fontsource-variable/fraunces";
+import App from "./App.vue";
+import router from "./router";
+import "./style.css";
+createApp(App).use(router).mount("#app");

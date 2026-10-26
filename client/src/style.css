@@ -1,0 +1,110 @@
+:root {
+  --bg: #fff3c4;
+  --paper: #fffbe6;
+  --ink: #141414;
+  --muted: #8b6914;
+  --line: #f0c44a;
+  --accent: #f19c25;
+  --bad: #b91c12;
+  --shadow: 0 8px 24px rgba(26, 20, 16, .06);
+}
+* { box-sizing: border-box; }
+html { overflow-x: clip; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: "Figtree", "Segoe UI", sans-serif;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+button, input, select, textarea { font: inherit; color: inherit; font-size: 16px; }
+button { touch-action: manipulation; }
+
+.login {
+  min-height: 100vh; display: grid; place-items: center; padding: 20px;
+  background:
+    radial-gradient(900px 480px at 10% 0%, #b91c12 0%, transparent 50%),
+    #141414;
+  color: #f6efe6;
+}
+.login .panel {
+  width: min(440px, 100%);
+  background: #fbfcfd;
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+}
+.login .muted { color: #5d6b66; }
+.login h1 { color: var(--ink); }
+.login .btn { width: 100%; }
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.panel h2 { margin: 0 0 12px; font-size: 16px; }
+
+.shell { min-height: 100vh; width: 100%; display: flex; flex-direction: column; }
+.top {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 16px 22px; border-bottom: 1px solid var(--line); background: var(--paper);
+}
+.top b { display: block; font-family: Fraunces, Georgia, serif; font-size: 20px; }
+.main { padding: 22px; flex: 1; }
+
+.btn {
+  background: var(--accent); color: #141414; border: 0; border-radius: 10px;
+  padding: 11px 14px; cursor: pointer; font-weight: 700; min-height: 42px;
+}
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+label { display: block; color: var(--muted); font-size: 12px; margin: 8px 0 4px; }
+input, select, textarea {
+  width: 100%; background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; padding: 11px 12px; font-size: 16px;
+}
+table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 520px; }
+th, td { text-align: left; padding: 10px 6px; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.muted { color: var(--muted); }
+.bad { color: var(--bad); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: -.03em; font-family: Fraunces, Georgia, serif; font-weight: 650; }
+.pass-field { position: relative; }
+.pass-field input { padding-right: 88px; }
+.pass-toggle {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  border: 0; background: transparent; color: var(--ink); font-weight: 700;
+  font-size: 13px; cursor: pointer; min-height: 40px; padding: 0 10px;
+}
+.book-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.pager { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 8px 0 4px; }
+
+@media (max-width: 720px) {
+  .main { padding: 12px; }
+  h1 { font-size: 22px; }
+  .book-head { flex-direction: column; }
+  .pager { justify-content: space-between; }
+  .pager .btn { flex: 1; }
+  .pager input { min-width: 0; flex: 1 1 120px; }
+  .login { padding: 16px 12px; }
+}
+
+@media print {
+  .no-print, .top { display: none !important; }
+  .shell, .main, body { background: #fff; }
+  .main { padding: 0; }
+  .panel { box-shadow: none; }
+  .journal-sheet { border: 0; padding: 0; overflow: visible; }
+  .journal-sheet table { display: table !important; width: 100% !important; min-width: 0 !important; table-layout: fixed; border-collapse: collapse; }
+  .journal-sheet thead { display: table-header-group !important; }
+  .journal-sheet tbody { display: table-row-group !important; }
+  .journal-sheet tr { display: table-row !important; break-inside: avoid; }
+  .journal-sheet th, .journal-sheet td { display: table-cell !important; }
+  @page { size: A4 landscape; margin: 12mm; }
+}
